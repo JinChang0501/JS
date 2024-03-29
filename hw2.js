@@ -11,5 +11,30 @@ let person = {
     }
 
 }
+
+for (let key in person) {
+    if (key === 'name' || key === 'age') {
+        console.log(`${key}:${person[key]}`);
+    }
+}
+
+// for (let hobby of person.hobbies) {
+//     if (hobby === "coding") {
+//         continue;
+//     }
+//     console.log(hobby);
+// }
+let filteredHobbies = [];
+
+for (let hobby of person.hobbies) {
+    if (hobby !== "coding") {
+        filteredHobbies.push(hobby);
+    }
+}
+
+person.hobbies = filteredHobbies;
+
+console.log(person.hobbies);
+
 person.getInfo();
 person.isAdult();
