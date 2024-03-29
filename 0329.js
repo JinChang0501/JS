@@ -88,3 +88,43 @@ function printNumbers(a, b, c) {
 }
 
 printNumbers(...[1, 2, 3]);
+
+
+
+
+const greet = function (price, discount) {
+    console.log(`價格是${price} ${discount}!`);
+}
+greet(100, 0.2);
+
+
+greet("John");
+function greet(name) {
+    console.log(`Hello,${name}!`);
+}
+greet("Jim");
+
+const greet = name => console.log(`Hello,${name}!`);
+greet("Jack");
+
+
+
+
+
+const greet = function (price, discount = "0.2") {
+    return price * (1 - discount)
+}
+console.log(getRealPrice(100));
+console.log(getRealPrice(100, 0.3));
+
+
+
+
+
+
+
+
+
+
+
+

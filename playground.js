@@ -1,3 +1,47 @@
+// 小試身手4
+// 1. 標準方式
+// function getRealPrice(price, discount = 0.2){
+//   return price * (1 - discount);
+// }
+
+// 2. 函式表達式
+// const getRealPrice = function(price, discount = 0.2){
+//   return price * (1 - discount);
+// }
+
+// 3. 箭頭函式
+const getRealPrice = (price, discount = 0.2) => price * (1 - discount);
+
+console.log(getRealPrice(100));
+console.log(getRealPrice(100, 0.3));
+
+
+
+
+// 小試身手3
+function findMax(...numbers){
+    let result = 0;
+    for(number of numbers){
+      // 第一輪, number => 1
+      // 第二輪, number => 2
+      // 第三輪, number => 5
+      // 第四輪, number => 7
+      // 第五輪, number => 3
+      if(number > result){
+         // 第一輪, result = 1
+         // 第二輪, result = 2
+         // 第三輪, result = 5
+         // 第四輪, result = 7
+         result = number;
+      }
+    }
+    
+    return result;
+}
+
+console.log(findMax(1,2,5,7,3));
+console.log(findMax(1,2,5));
+console.log(findMax(1,2,5,7,3,10));
 
 // Rest & Spread Operation
 function printNumbers(...numbers){
