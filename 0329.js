@@ -114,12 +114,15 @@ greet("Jack");
 const greet = function (price, discount = "0.2") {
     return price * (1 - discount)
 }
-console.log(getRealPrice(100));
-console.log(getRealPrice(100, 0.3));
+console.log(greet(100));
+console.log(greet(100, 0.3));
 
 
 
+const sentence = "Hello Jin";
 
+console.log(sentence.at(3));
+console.log(sentence.startsWith("B"));
 
 
 
