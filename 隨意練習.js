@@ -43,3 +43,57 @@ if (correctQuestion <= 10) {
 }
 
 console.log(total);
+
+
+let a = 5 === "5";
+console.log(a);
+
+let WeekNO = "2";
+switch (WeekNO) {
+    case "1":
+        console.log("禮拜一");
+        break;
+    case "2":
+        console.log("禮拜二");
+        break;
+    case "3":
+        console.log("禮拜三");
+        break;
+    case "4":
+        console.log("禮拜四");
+        break;
+    case "5":
+        console.log("禮拜五");
+        break;
+    case "6":
+        console.log("禮拜六");
+        break;
+    case "7":
+        console.log("禮拜日");
+        break;
+    default:
+        console.log("NA")
+}
+
+let num = 0;
+while (num < 5) {
+    console.log(num);
+    num++;
+}
+
+// let n = 10;
+// let i = 1;
+// let sum = 0;
+
+// while (i <= n) {
+//     sum = sum + i;
+//     i++;
+// }
+// console.log(sum);
+
+let n = 10;
+let sum = 0;
+for (let i = 1; i <= n; i++) {
+    sum = sum + i
+}
+console.log(sum);
