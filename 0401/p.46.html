@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="myElement" class="active" test="test">
+        Hello World!
+    </div>
+    <script>
+        myElement.innerText = "Hello JavaScript";
+        myElement.style.backgroundColor = "Green";
+        myElement.classList.remove("active");
+        myElement.getAttribute("test");
+        let answer = window.prompt("你想要加入甚麼class")
+        myElement.classList.add(answer);
+
+    </script>
+</body>
+
+</html>
