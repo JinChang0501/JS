@@ -101,3 +101,40 @@ console.log(sum);
 let a = 1;
 let b = 1;
 
+function sum(a, b, c) {
+    return console.log(a + b + c);
+}
+
+let args = [1, 2, 3];
+sum(...args);
+
+let args2 = [...args];
+sum(...args2);
+
+
+
+
+
+
+let number = [1, 2, 3, 4, 5];
+function findMax(...number) {
+    return Math.max(...number)
+}
+console.log(findMax(...number));
+
+
+
+let greet = function (name = "john") {
+    console.log(`hello, ${name}`)
+}
+
+greet();
+
+
+
+function money(price, discount = "0.2") {
+    price = price * (discount);
+    return price;
+}
+
+console.log(money(100,));
