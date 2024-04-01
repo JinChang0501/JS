@@ -1,0 +1,9 @@
+<script>
+    window.alert("這是歡迎訊息!");
+    let answer = window.confirm("需要打開另一個畫面嗎?");
+    if (answer) {
+        let tab = window.open("index_2.html");
+        setTimeout(() => tab.close(), 2000)
+    }
+    setInterval(() => console.log(new Date()), 2000)
+</script>

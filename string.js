@@ -1,17 +1,15 @@
 const sentence = "Hello Jin";
-
 console.log(sentence.at(3));
 console.log(sentence.startsWith("B"));
 console.log(sentence.endsWith("n"));
 
-
-const sentence = "Hello Jin";
-
-console.log(sentence.concat("!!!"))
-console.log(sentence.repeat(3));
-console.log(sentence.replace("e", "%"));
-console.log(sentence.replaceAll("e", "$"));
-console.log(sentence.substring(1, 4))
+//2
+const sentence2 = "Hello Jin";
+console.log(sentence2.concat("!!!"))
+console.log(sentence2.repeat(3));
+console.log(sentence2.replace("e", "%"));
+console.log(sentence2.replaceAll("e", "$"));
+console.log(sentence2.substring(1, 4))
 
 
 let url = "Visit my blogs http://blog1.com and https://blog2.com for more info.";
