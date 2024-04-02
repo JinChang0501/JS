@@ -1,0 +1,105 @@
+<div>
+    <input type="text" id="display" disabled />
+    <br>
+    <button class="number">1</button>
+    <button class="number">2</button>
+    <button class="number">3</button>
+    <button class="number">4</button>
+    <button class="number">5</button>
+    <button class="number">6</button>
+    <button class="number">7</button>
+    <button class="number">8</button>
+    <button class="number">9</button>
+    <button class="number">0</button>
+    <br>
+    <button class="operator">+</button>
+    <button class="operator">-</button>
+    <button class="operator">*</button>
+    <button class="operator">/</button>
+    <button type="reset" id="reset">Reset</button>
+    <button id="equals">=</button>
+</div>
+<script>
+    let firstNumber = "";
+    let secondNumber = "";
+    let operator = "";
+
+    const numberbuttons = document.getElementsByClassName('number');
+    for (let button of numberbuttons) {
+        button.addEventListener('click', function () {
+            if (operator === "") {
+                firstNumber = firstNumber + this.innerText
+                display.value = firstNumber;
+            } else {
+                secondNumber = secondNumber + this.innerText
+                display.value = secondNumber;
+            }
+        })
+    }
+
+    const opersbuttons = document.getElementsByClassName('operator');
+    for (let button of opersbuttons) {
+        button.addEventListener('click', function () {
+            if (firstNumber !== "") {
+                operator = this.innerText
+                display.value = operator;
+            }
+        }
+
+        )
+    }
+
+
+    equals.addEventListener("click", function () {
+        if (operator === "+") {
+            result = parseInt(firstNumber) + parseInt(secondNumber)
+
+        }
+        if (operator === "-") {
+            result = parseInt(firstNumber) - parseInt(secondNumber)
+
+        }
+        if (operator === "*") {
+            result = parseInt(firstNumber) * parseInt(secondNumber)
+
+        }
+        if (operator === "/") {
+            result = parseInt(firstNumber) / parseInt(secondNumber)
+
+        }
+        display.value = makeItBetter(result);
+
+    });
+
+    reset.addEventListener("click", function () {
+        firstNumber = "";
+        secondNumber = "";
+        operator = "";
+        display.value = "";
+    });
+    function makeItBetter(result) {
+        result = result.toString();
+        let array = result.split(''); //'2570' => [2,5,7,0]
+        array = array.reverse();
+
+        let newResult = [];
+        for (let index = 0; index < array.length; index++) {
+            if (index > 0 && index % 3 === 0) {
+                newResult.push(',');
+            }
+
+            newResult.push(array[index]);
+            // [0] -> index => 0
+            // [0,7] -> index => 1
+            // [0,7,5] -> index => 2
+            // [0,7,5,',']   -> index => 3
+            // [0,7,5,',',2] -> index => 3
+        }
+
+        newResult = newResult.reverse(); // [0,7,5,',',2] -> [2,',',5,7,0]
+        newResult = newResult.join(''); // [2,',',5,7,0] -> '2,570'
+        return newResult;
+
+    }
+
+</script>

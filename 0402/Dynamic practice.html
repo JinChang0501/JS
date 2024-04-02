@@ -1,0 +1,28 @@
+<!-- 請在一個 HTML 頁面裡建立一個按鈕和一個空的 div,按下按鈕後
+在 div 裡新增一個含有文字的 p Element,並可以切換該段落的顯
+示/隱藏狀態。 -->
+
+
+
+<button id="btn">點我</button>
+<div id="box"></div>
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
+<script>
+    let paragraph = "";
+    btn.addEventListener("click", function () {
+        if (paragraph === "") {
+            let pElement = document.createElement("p");
+            pElement.innerText = "This is a new paragraph."
+            box.append(pElement);
+
+            paragraph = document.getElementsByTagName('p')[0];
+        } else {
+            paragraph.classList.toggle("hidden");
+        }
+
+    })
+</script>
