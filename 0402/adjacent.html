@@ -9,3 +9,20 @@
         </div>
     </div>
 </article>
+
+
+<script>
+    newElement = document.createElement("div");
+    newElement.innerText = "I am new!!!"
+    document.getElementById("div-03").insertAdjacentElement("beforebegin", newElement);
+    document.getElementById("div-03").insertAdjacentElement("afetrbegin", newElement);
+    document.getElementById("div-03").insertAdjacentElement("beforeend", newElement);
+    document.getElementById("div-03").insertAdjacentElement("afterend", newElement);
+
+
+
+
+    document.getElementById("div-03").insertAdjacentHTML("beforebegin", "<div>I am new div via HTML</div>");
+    document.getElementById("div-03").insertAdjacentHTML("beforebegin", "<div>I am new div via HTML</div>");
+
+</script>
