@@ -14,41 +14,97 @@
 <button id="clearAllBtn">清除全部</button>
 
 <script>
-    addTaskBtn.addEventListener("click", function () {
+    addTaskBtn.addEventListener("click", () => addTask());
+
+    //更新Add按鈕
+    let stopAdded = false;
+    function updateAddButton() {
+        if (document.querySelectorAll('li').length >= 5) {
+            addTaskBtn.innerText = '已超過最大限制';
+            stopAdded = true;
+        } else {
+            addTaskBtn.innerText = 'Add'
+            stopAdded = false;
+        }
+    }
+    //計算剩餘任務數量
+    function updateTaskLeft() {
+        tasksLeftCounter.innerText = document.querySelectorAll("li input:not(:checked)").length;
+    }
+
+    //
+    function addTask() {
+        if (stopAdded) {
+            return;
+        }
 
         let li = document.createElement("li");
+        let checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
 
-        let input = document.createElement("input");
-        input.type = "checkbox";
+        checkbox.addEventListener('change', () => updateTaskLeft());
+        //
         let span = document.createElement("span");
         span.innerText = newTaskInput.value;
-        let button = document.createElement("button");
-        button.innerText = "編輯"
-        let button2 = document.createElement("button");
-        button2.innerText = "刪除"
-
-        button.addEventListener("click", function () {
-            let result = window.prompt("編輯task");
-            span.innerText = result;
-        });
-
-        button2.addEventListener("click", function () {
+        //編輯
+        let editBtn = document.createElement("button");
+        editBtn.innerText = "編輯"
+        editBtn.addEventListener("click", function () {
+            const newTask = prompt('編輯 task');
+            if (newTask !== '') {
+                this.previousSibling.innerText = newTask;
+            }
+        })
+        //刪除
+        let deleteBtn = document.createElement("button");
+        deleteBtn.innerText = "刪除"
+        deleteBtn.addEventListener("click", function () {
             this.parentNode.remove();
+            updateTaskLeft()
+            updateAddButton();
             // li.remove();
         });
-        li.append(input);
+
+        li.append(checkbox);
         li.append(span);
-        li.append(button);
-        li.append(button2);
+        li.append(editBtn);
+        li.append(deleteBtn);
 
         newTaskInput.value = '';
         taskList.append(li);
+        updateTaskLeft();
+        updateAddButton();
+    };
+    //
+    function applyFilter(filter) {
+        const checkboxes = document.querySelectorAll('li input');
+        for (let checkbox of checkboxes) {
+            const isChecked = checkbox.checked; //設定isChecked
+            if (filter === 'all') {
+                checkbox.parentNode.style.display = 'list-item';
+            } else if (filter === 'active') {
+                checkbox.parentNode.style.display = isChecked ? 'none' : 'list-item';
+            } else if (filter === 'completed') {
+                checkbox.parentNode.style.display = isChecked ? 'list-item' : 'none';
+            }
+        }
+    }
+    //keydown
+    newTaskInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            addTask();
+        } else if (event.key === "Escape") {
+            newTaskInput.value = "";
+        }
+    });
 
+    allFilter.addEventListener("click", () => applyFilter("all"));
+    activeFilter.addEventListener("click", () => applyFilter("active"));
+    completedFilter.addEventListener("click", () => applyFilter("completed"));
 
-
-    })
-
-
-
-
+    //清除全部
+    clearAllBtn.addEventListener("click", function () {
+        taskList.innerHTML = "";
+        updateTaskLeft();
+    });
 </script>
