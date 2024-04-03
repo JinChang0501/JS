@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a New Post</title>
+    <style>
+        p.error {
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Create a New Post</h2>
+    <form id="articleForm" method="post">
+        Title: <input type="text" name="title" id="title"><br>
+        <p id="titleError" class="error"></p>
+        Content: <textarea type="text" name="content" id="content"></textarea><br>
+        <p id="contentError" class="error"></p>
+        Author Email: <input type="text" name="email" id="email"><br>
+        <p id="emailError" class="error"></p>
+        Creation Date: <input type="date" name="datetime" id="datetime">
+        <p id="datetimeError" class="error"></p><br>
+
+        <input type="submit" value="Submit" id="submit">
+    </form>
+    <script>
+        const form = document.getElementById('articleForm');
+        const title = document.getElementById('title');
+        const content = document.getElementById('content');
+        const email = document.getElementById('email');
+        const datetime = document.getElementById('datetime');
+        const titleError = document.getElementById('titleError');
+        const contentError = document.getElementById('contentError');
+        const emailError = document.getElementById('emailError');
+        const datetimeError = document.getElementById('datetimeError');
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            titleError.style.display = 'none';
+            contentError.style.display = 'none';
+            emailError.style.display = 'none';
+            datetimeError.style.display = 'none';
+
+            if (title.value === '') {
+                titleError.innerText = "請輸入Title";
+                titleError.style.display = 'block';
+            }
+
+            if (content.value === '') {
+                contentError.innerText = "請輸入Content";
+                contentError.style.display = 'block';
+            } else if (content.value.length > 50) {
+                contentError.innerText = "字數不可超過50字";
+                contentError.style.display = 'block';
+            }
+
+            if (email.value === '') {
+                emailError.innerText = '請輸入Email';
+                emailError.style.display = 'block';
+            } else {
+                const atPosition = email.value.indexOf('@');
+                if (atPosition <= 0 || atPosition === email.value.length - 1) {
+                    emailError.innerText = '請輸入合法Email';
+                    emailError.style.display = 'block';
+                }
+            }
+
+            if (datetime.value === '') {
+                datetimeError.innerText = '請選擇Creation Date';
+                datetimeError.style.display = 'block';
+            } else {
+                const formDate = new Date(datetime.value);
+                if (formDate > new Date()) {
+                    datetimeError.innerText = '請選擇小於今天的日期';
+                    datetimeError.style.display = 'block';
+                }
+            }
+
+            if (!titleError.innerText && !contentError.innerText && !emailError.innerText && !datetimeError.innerText) {
+                window.alert("表單送出!");
+                // 在這裡可以提交表單
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -26,37 +26,54 @@
         emailError.innerText = '';
         datetimeError.innerText = '';
 
-
+        if (title.value === "") {
+            titleError.innerText = "請輸入title"
+            // return;
+        }
+        if (content.value === "") {
+            contentError.innerText = "請輸入content"
+            // return;
+        }
+        if (email.value === "") {
+            emailError.innerText = "請輸入email"
+            // return;
+        }
+        if (title.value.length === "") {
+            titleError.innerText = "請輸入title"
+            // return;
+        }
         if (title.value !== title.value.toUpperCase()) {
             titleError.innerText = "請輸入全大寫";
-            return;
+            // return;
         };
 
 
-        if (content.value.length <= 0) {
-            contentError.innerText = "請輸入Content"
-            return;
-        }
         if (content.value.length > 50) {
             contentError.innerText = "字數不可超過50字"
-            return;
+            // return;
         }
         if (content.value.length > 50 && content.value.length <= 0) {
             contentError.innerText = "字數不可超過50字"
-            return;
+            // return;
         } else {
 
         }
         let atPosition = email.value.indexOf('@');
         if (atPosition <= 0 || atPosition === email.length - 1) {
             emailError.innerText = '請輸入合法 email';
-            return;
+            // return;
         }
         const formDate = new Date(datetime.value);
         if (formDate > new Date()) {
             datetimeError.innerText = '請輸入小於今天的日期';
-            return;
+            // return;
         }
+        //設計沒有輸入值的情況要跳出提示訊息
+
+
+
+
+
         window.alert("表單送出!");
     })
 
